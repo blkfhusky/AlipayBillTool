@@ -30,8 +30,7 @@
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
         <!--这里填写生成的表mapper目录-->
-        <javaClientGenerator targetPackage="com.zxc.mapper" targetProject="src/main/java"
-                             type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="com.zxc.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <!--这里的%通配符表示库里面的所有表-->
         <table tableName="my_user">
