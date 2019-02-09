@@ -10,7 +10,6 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
-
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <!--这里修改成统一的Mapper父接口-->
             <property name="mappers" value="com.example.mapper.util.MyMapper"/>
