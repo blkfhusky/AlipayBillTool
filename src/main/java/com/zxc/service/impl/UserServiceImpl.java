@@ -1,7 +1,7 @@
 package com.zxc.service.impl;
 
-import com.zxc.entity.User;
-import com.zxc.mapper.UserMapper;
+import com.zxc.entity.MyUser;
+import com.zxc.mapper.MyUserMapper;
 import com.zxc.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,12 +23,32 @@ public class UserServiceImpl implements UserService {
 
 
     @Autowired
-    private UserMapper userMapper;
+    private MyUserMapper userMapper;
 
 
     @Override
-    public User getUser(Long id) {
+    public MyUser getUser(Long id) {
         logger.info("--- user id is {}", id);
-        return userMapper.get(id);
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public Integer init() {
+//        User user;
+        int i = 0;
+        do {
+            MyUser user = new MyUser();
+            user.setId((long) ++i);
+            user.setName("name" + i);
+            user.setSex(Math.random() > 0.5);
+            user.setAge((int) (Math.random() * 70));
+            user.setHomeAddr("home_addr" + i);
+            user.setCompanyAddr("company_addr" + i);
+            userMapper.insert(user);
+            if (i % 1000 == 0) {
+                logger.info("已经导入{}行记录", i);
+            }
+        } while (i < 100000);
+        return i;
     }
 }

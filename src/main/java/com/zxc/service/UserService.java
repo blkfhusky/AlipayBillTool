@@ -1,6 +1,6 @@
 package com.zxc.service;
 
-import com.zxc.entity.User;
+import com.zxc.entity.MyUser;
 
 /**
  * Description:
@@ -12,5 +12,18 @@ import com.zxc.entity.User;
  */
 public interface UserService {
 
-    User getUser(Long id);
+    /**
+     * 根据id获取user信息
+     *
+     * @param id userId
+     * @return user信息
+     */
+    MyUser getUser(Long id);
+
+    /**
+     * 初始化user
+     *
+     * @return 初始成功数
+     */
+    Integer init();
 }

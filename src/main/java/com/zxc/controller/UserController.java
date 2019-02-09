@@ -1,11 +1,9 @@
 package com.zxc.controller;
 
-import com.zxc.entity.User;
+import com.zxc.entity.MyUser;
 import com.zxc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Description:
@@ -21,10 +19,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
+    @GetMapping("/{id}")
+    public MyUser getUser(@PathVariable Long id) {
         return userService.getUser(id);
     }
+
+    @PostMapping("/init")
+    public Integer initUsers() {
+        return userService.init();
+    }
+
 
 
 }
